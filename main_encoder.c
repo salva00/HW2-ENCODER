@@ -228,19 +228,19 @@ static void rt1Task(void * pvParameters){
     {
         vTaskDelayUntil( &xNextWakeTime, xBlockTime );
 
-        xSemaphoreTake(rising_edge.lock, portMAX_DELAY);
+        xSemaphoreTake(enc_data.lock, portMAX_DELAY);
         if( last_value == 0 && enc_data.slit == 1){
 			last_value = 1;
 			
-			pthread_mutex_lock(&rising_edge.lock);
-			rising_edge.count++;
-			pthread_mutex_unlock(&rising_edge.lock);
+        xSemaphoreTake(rising_edge.lock, portMAX_DELAY);
+		rising_edge.count++;
+		xSemaphoreGive(rising_edge.lock);
 			
 		}
 		else if(last_value == 1 && enc_data.slit == 0){
 			last_value = 0;
 		}
-        xSemaphoreGive(rising_edge.lock);
+        xSemaphoreGive(enc_data.lock);
 
     }
     
