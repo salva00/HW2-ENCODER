@@ -90,7 +90,6 @@
 #include "FreeRTOS/Source/include/task.h"
 #include "FreeRTOS/Source/include/timers.h"
 #include "FreeRTOS/Source/include/semphr.h"
-// #include "FreeRTOS/Source/include/rtc.h"
 
 /* Local includes. */
 
@@ -103,7 +102,7 @@
 
 /* The rate at which data is sent to the queue.  The times are converted from
  * milliseconds to ticks using the pdMS_TO_TICKS() macro. */
-#define BASE_PERIOD_MS 10
+#define BASE_PERIOD_MS 5
 #define mainENCODER_TICK_FREQUENCY			pdMS_TO_TICKS( BASE_PERIOD_MS )
 #define mainTASK1_TICK_FREQUENCY			pdMS_TO_TICKS( BASE_PERIOD_MS/2 )
 #define mainTASK2_TICK_FREQUENCY			pdMS_TO_TICKS( BASE_PERIOD_MS/2 )
